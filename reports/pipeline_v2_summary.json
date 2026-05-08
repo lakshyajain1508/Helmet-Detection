@@ -1,0 +1,34 @@
+{
+  "output_yolo": "D:\\Helmet_detection\\combined_dataset",
+  "output_organized": "D:\\Helmet_detection\\organized_dataset",
+  "yaml": "D:\\Helmet_detection\\combined_data.yaml",
+  "img_size": 640,
+  "classes": [
+    "helmet",
+    "without_helmet"
+  ],
+  "originals_modified": false,
+  "splits": {
+    "train": {
+      "images": 736,
+      "annotations": {
+        "without_helmet": 715,
+        "helmet": 718
+      }
+    },
+    "val": {
+      "images": 210,
+      "annotations": {
+        "without_helmet": 186,
+        "helmet": 194
+      }
+    },
+    "test": {
+      "images": 106,
+      "annotations": {
+        "without_helmet": 86,
+        "helmet": 113
+      }
+    }
+  }
+}

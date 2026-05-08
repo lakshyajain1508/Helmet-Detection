@@ -1,0 +1,14 @@
+path: D:/Helmet_detection/normalized_dataset
+train:
+- train/helmet/images
+- train/without_helmet/images
+val:
+- valid/helmet/images
+- valid/without_helmet/images
+test:
+- test/helmet/images
+- test/without_helmet/images
+nc: 2
+names:
+- helmet
+- without_helmet

@@ -1,0 +1,31 @@
+{
+  "target_dir": "D:\\Helmet_detection\\normalized_dataset",
+  "copies_per_img": 3,
+  "techniques": [
+    "flip",
+    "rot",
+    "bright",
+    "contrast",
+    "sat",
+    "blur",
+    "sharp",
+    "noise",
+    "zoom",
+    "persp"
+  ],
+  "classes": {
+    "With_helmet": {
+      "originals": 368,
+      "augmented": 1104,
+      "total": 1472
+    },
+    "Without_helmet": {
+      "originals": 368,
+      "augmented": 1104,
+      "total": 1472
+    }
+  },
+  "total_original": 736,
+  "total_augmented": 2208,
+  "total_dataset": 2944
+}

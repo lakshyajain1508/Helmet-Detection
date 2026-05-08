@@ -27,16 +27,3 @@ ENV/
 # OS specific
 .DS_Store
 Thumbs.db
-
-# Project specific
-normalized_dataset/
-flat_dataset/
-With Helmet/
-Without Helmet/
-runs/
-reports/
-models/
-*.pt
-*.onnx
-*.yaml
-!helmet_train.yaml

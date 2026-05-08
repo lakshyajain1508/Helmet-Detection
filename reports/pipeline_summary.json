@@ -1,0 +1,32 @@
+{
+  "output_dir": "D:\\Helmet_detection\\combined_dataset",
+  "yaml": "D:\\Helmet_detection\\combined_data.yaml",
+  "img_size": 640,
+  "classes": [
+    "helmet",
+    "no_helmet"
+  ],
+  "splits": {
+    "train": {
+      "images": 736,
+      "annotations": {
+        "no_helmet": 715,
+        "helmet": 707
+      }
+    },
+    "val": {
+      "images": 210,
+      "annotations": {
+        "no_helmet": 186,
+        "helmet": 220
+      }
+    },
+    "test": {
+      "images": 106,
+      "annotations": {
+        "no_helmet": 86,
+        "helmet": 98
+      }
+    }
+  }
+}

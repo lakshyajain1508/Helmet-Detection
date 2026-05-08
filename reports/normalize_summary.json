@@ -1,0 +1,41 @@
+{
+  "output": "D:\\Helmet_detection\\normalized_dataset",
+  "yaml": "D:\\Helmet_detection\\normalized_data.yaml",
+  "img_size": 640,
+  "classes": [
+    "helmet",
+    "without_helmet"
+  ],
+  "splits": {
+    "train": {
+      "helmet": {
+        "images": 368,
+        "annotations": 728
+      },
+      "without_helmet": {
+        "images": 368,
+        "annotations": 698
+      }
+    },
+    "valid": {
+      "helmet": {
+        "images": 105,
+        "annotations": 207
+      },
+      "without_helmet": {
+        "images": 105,
+        "annotations": 183
+      }
+    },
+    "test": {
+      "helmet": {
+        "images": 53,
+        "annotations": 90
+      },
+      "without_helmet": {
+        "images": 53,
+        "annotations": 106
+      }
+    }
+  }
+}

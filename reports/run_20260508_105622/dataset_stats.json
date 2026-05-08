@@ -1,0 +1,29 @@
+{
+  "train": {
+    "images": 2944,
+    "labels": 2944,
+    "annotations": 5704,
+    "classes": {
+      "helmet": 1472,
+      "without_helmet": 1472
+    }
+  },
+  "valid": {
+    "images": 210,
+    "labels": 210,
+    "annotations": 390,
+    "classes": {
+      "helmet": 105,
+      "without_helmet": 105
+    }
+  },
+  "test": {
+    "images": 106,
+    "labels": 106,
+    "annotations": 196,
+    "classes": {
+      "helmet": 53,
+      "without_helmet": 53
+    }
+  }
+}
