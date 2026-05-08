@@ -1,0 +1,8 @@
+names:
+- helmet
+- without_helmet
+nc: 2
+path: D:\Helmet-Detection-main\flat_dataset
+test: test/images
+train: train/images
+val: valid/images

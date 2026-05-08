@@ -1,0 +1,42 @@
+# Python / Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+.env
+.venv
+venv/
+ENV/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Project specific
+normalized_dataset/
+flat_dataset/
+With Helmet/
+Without Helmet/
+runs/
+reports/
+models/
+*.pt
+*.onnx
+*.yaml
+!helmet_train.yaml
