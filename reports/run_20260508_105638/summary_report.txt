@@ -1,0 +1,39 @@
+============================================================
+  HELMET DETECTION - TRAINING SUMMARY REPORT
+  Generated: 2026-05-08 13:33:21
+============================================================
+
+DATASET STATISTICS
+----------------------------------------
+  train :  2944 images | helmet= 1472 | without_helmet= 1472 | annotations=  5704
+  valid :   210 images | helmet=  105 | without_helmet=  105 | annotations=   390
+  test  :   106 images | helmet=   53 | without_helmet=   53 | annotations=   196
+
+VALIDATION METRICS
+----------------------------------------
+  precision           : 0.5590
+  recall              : 0.4852
+  f1                  : 0.5195
+  map50               : 0.4707
+  map                 : 0.1900
+
+TEST METRICS
+----------------------------------------
+  precision           : 0.6329
+  recall              : 0.4454
+  f1                  : 0.5229
+  map50               : 0.4732
+  map                 : 0.2015
+
+OUTPUT FILES
+----------------------------------------
+  Best weights  : models/best.pt
+  ONNX model    : models/best.onnx
+  Training runs : runs/train/helmet_yolov8n_20260508_105644/
+  Report dir    : D:\Helmet-Detection-main\reports\run_20260508_105638
+
+DEPLOYMENT NOTES
+----------------------------------------
+  from ultralytics import YOLO
+  model = YOLO('models/best.pt')
+  results = model.predict('image.jpg', conf=0.25, iou=0.45)

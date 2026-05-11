@@ -27,19 +27,3 @@ ENV/
 # OS specific
 .DS_Store
 Thumbs.db
-
-# YOLOv8 / Training
-runs/
-flat_dataset/
-normalized_dataset/
-With\ Helmet/
-Without\ Helmet/
-*.pt
-*.onnx
-*.torchscript
-!models/*.pt
-!models/*.onnx
-!models/*.torchscript
-
-# Reports
-reports/run_*/
