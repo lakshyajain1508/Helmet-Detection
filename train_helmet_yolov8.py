@@ -298,7 +298,7 @@ def train(yaml_path, dataset_stats, use_gpu):
     # Adaptive batch size
     device, has_gpu = use_gpu
     batch  = 8 if has_gpu else 4
-    epochs = 100
+    epochs = 70
     imgsz  = 640
     workers = 0  # 0 = main process loading (fixes Windows DataLoader memory errors)
 
