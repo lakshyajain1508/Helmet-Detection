@@ -1,6 +1,6 @@
 names:
 - helmet
-- without_helmet
+- no_helmet
 nc: 2
 path: D:\Helmet-Detection-main\flat_dataset
 test: test/images

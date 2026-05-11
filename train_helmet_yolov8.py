@@ -11,7 +11,7 @@ if sys.stderr and hasattr(sys.stderr, 'reconfigure'):
 """
 ============================================================
   YOLOv8 Helmet Detection - Optimized Training Pipeline
-  Classes: helmet (0), without_helmet (1)
+  Classes: helmet (0), no_helmet (1)
   Author: Auto-generated training script
 ============================================================
 """
@@ -67,7 +67,7 @@ log = logging.getLogger(__name__)
 #  1. DATASET ANALYSIS & YAML GENERATION
 # ═══════════════════════════════════════════════════════════
 DATASET_ROOT = BASE_DIR / "normalized_dataset"
-CLASSES      = ["helmet", "without_helmet"]
+CLASSES      = ["helmet", "no_helmet"]
 
 def count_files(path, ext="*.jpg"):
     return len(list(path.glob(ext))) + len(list(path.glob("*.png"))) + len(list(path.glob("*.jpeg")))
@@ -102,7 +102,7 @@ def analyze_dataset():
                  f"labels={stats[split]['labels']:5d}  "
                  f"annotations={stats[split]['annotations']:6d}  "
                  f"helmet={stats[split]['classes']['helmet']:5d}  "
-                 f"without_helmet={stats[split]['classes']['without_helmet']:5d}")
+                 f"no_helmet={stats[split]['classes']['no_helmet']:5d}")
 
     # Save stats
     with open(REPORT_DIR / "dataset_stats.json", "w") as f:
@@ -115,12 +115,12 @@ def analyze_dataset():
 def _plot_class_distribution(stats):
     splits = list(stats.keys())
     helmet_counts  = [stats[s]["classes"]["helmet"] for s in splits]
-    no_helmet_counts = [stats[s]["classes"]["without_helmet"] for s in splits]
+    no_helmet_counts = [stats[s]["classes"]["no_helmet"] for s in splits]
     x = np.arange(len(splits))
     width = 0.35
     fig, ax = plt.subplots(figsize=(8, 5))
     ax.bar(x - width/2, helmet_counts,   width, label="helmet",         color="#2ecc71", edgecolor="black")
-    ax.bar(x + width/2, no_helmet_counts, width, label="without_helmet", color="#e74c3c", edgecolor="black")
+    ax.bar(x + width/2, no_helmet_counts, width, label="no_helmet", color="#e74c3c", edgecolor="black")
     ax.set_xlabel("Split"); ax.set_ylabel("Image Count")
     ax.set_title("Class Distribution per Split")
     ax.set_xticks(x); ax.set_xticklabels([s.capitalize() for s in splits])
@@ -219,15 +219,24 @@ def build_flat_dataset():
             for img_path in list(src_img.glob("*.jpg")) + list(src_img.glob("*.png")) + list(src_img.glob("*.jpeg")):
                 dst = dst_img / (prefix + img_path.name)
                 if not dst.exists():
-                    shutil.copy2(img_path, dst)
-                    copied_imgs += 1
+                    try:
+                        shutil.copy2(img_path, dst)
+                        copied_imgs += 1
+                    except PermissionError:
+                        log.warning(f"  Access denied: {img_path} (skipping)")
+                    except Exception as e:
+                        log.warning(f"  Error copying {img_path}: {e}")
 
             if src_lbl.exists():
                 for lbl_path in src_lbl.glob("*.txt"):
                     dst = dst_lbl / (prefix + lbl_path.name)
-                    if not dst.exists():
+                    try:
                         shutil.copy2(lbl_path, dst)
                         copied_lbls += 1
+                    except PermissionError:
+                        log.warning(f"  Access denied: {lbl_path} (skipping)")
+                    except Exception as e:
+                        log.warning(f"  Error copying {lbl_path}: {e}")
 
     log.info(f"  Copied {copied_imgs} images, {copied_lbls} label files → {flat_dir}")
 
@@ -282,14 +291,14 @@ def train(yaml_path, dataset_stats, use_gpu):
     # Compute class weights for imbalance handling
     train_stats = dataset_stats.get("train", {})
     n_helmet    = max(train_stats.get("classes", {}).get("helmet", 1), 1)
-    n_no_helmet = max(train_stats.get("classes", {}).get("without_helmet", 1), 1)
+    n_no_helmet = max(train_stats.get("classes", {}).get("no_helmet", 1), 1)
     total_train = n_helmet + n_no_helmet
-    log.info(f"  Train set: helmet={n_helmet}, without_helmet={n_no_helmet}")
+    log.info(f"  Train set: helmet={n_helmet}, no_helmet={n_no_helmet}")
 
     # Adaptive batch size
     device, has_gpu = use_gpu
     batch  = 8 if has_gpu else 4
-    epochs = 50
+    epochs = 100
     imgsz  = 640
     workers = 0  # 0 = main process loading (fixes Windows DataLoader memory errors)
 
@@ -491,7 +500,7 @@ def write_summary(dataset_stats, val_dict, test_dict, run_name):
     for split, s in dataset_stats.items():
         lines.append(f"  {split:6s}: {s['images']:5d} images | "
                      f"helmet={s['classes']['helmet']:5d} | "
-                     f"without_helmet={s['classes']['without_helmet']:5d} | "
+                     f"no_helmet={s['classes']['no_helmet']:5d} | "
                      f"annotations={s['annotations']:6d}")
     lines.append("")
     lines.append("VALIDATION METRICS")

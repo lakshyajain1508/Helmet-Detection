@@ -27,3 +27,16 @@
 2026-05-08 10:56:44,456 [INFO]   Train set: helmet=1472, without_helmet=1472
 2026-05-08 10:56:44,525 [INFO]   Config: epochs=50, batch=8, imgsz=640, device=0
 2026-05-08 10:56:44,525 [INFO]   Output: runs/train/helmet_yolov8n_20260508_105644
+2026-05-08 13:30:26,506 [INFO]   Training complete in 153.7 minutes
+2026-05-08 13:30:26,506 [INFO] ============================================================
+2026-05-08 13:30:26,506 [INFO]   MODEL EVALUATION
+2026-05-08 13:30:26,506 [INFO] ============================================================
+2026-05-08 13:32:06,336 [INFO]   [Validation] Precision=0.5590  Recall=0.4852  F1=0.5195  mAP@0.5=0.4707  mAP@0.5:0.95=0.1900
+2026-05-08 13:32:06,337 [INFO]   [Test] Precision=0.6329  Recall=0.4454  F1=0.5229  mAP@0.5=0.4732  mAP@0.5:0.95=0.2015
+2026-05-08 13:32:06,671 [INFO]   Saved evaluation_metrics.png
+2026-05-08 13:32:06,672 [INFO] ============================================================
+2026-05-08 13:32:06,672 [INFO]   EXPORTING BEST MODEL
+2026-05-08 13:32:06,673 [INFO] ============================================================
+2026-05-08 13:32:06,673 [INFO]   Best weights: D:\Helmet-Detection-main\runs\train\helmet_yolov8n_20260508_105644\weights\best.pt
+2026-05-08 13:33:21,939 [INFO]   Inference speed: 112.4 ms/img  (8.9 FPS)
+2026-05-08 13:33:21,950 [INFO] 
