@@ -1,48 +1,126 @@
-# Helmet Detection YOLOv8
 
-This repository contains a full pipeline for training a YOLOv8 object detection model to detect whether people are wearing helmets or not (`helmet` vs `no_helmet`).
+# 🪖 Helmet Detection using YOLOv8n
 
-## Pipeline Features
+A real-time Helmet Detection System built using **YOLOv8n** and **PyTorch** for detecting whether motorcycle riders are wearing helmets or not.
 
-1. **Dataset Preprocessing (`01_preprocess_dataset.py`)**
-   - Validates annotation integrity across multiple YOLO datasets.
-   - Detects and removes corrupted or duplicate images.
-   - Merges multiple datasets into a single `combined_dataset` structure.
-   - Automatically generates a `combined_data.yaml` config file.
+This project uses Computer Vision and Deep Learning techniques to improve road safety monitoring and automate helmet compliance detection from images, videos, and live webcam feeds.
 
-2. **Data Augmentation & Rebalancing (`02_augment_rebalance.py`)**
-   - Analyzes class distribution to identify minority classes.
-   - Applies offline augmentations (flips, rotations, scaling, color jitter) to minority class images.
-   - Generates new image/label pairs to balance the dataset.
+---
 
-3. **YOLOv8 Training (`03_train_yolov8.py`)**
-   - Uses Ultralytics YOLOv8 for object detection.
-   - Implements advanced augmentations (mosaic, mixup, fliplr).
-   - Configured with Cosine LR scheduling, AdamW optimizer, and early stopping.
-   - Automatically detects CPU vs. GPU and optimizes settings.
+# 🚀 Features
 
-4. **Model Evaluation (`04_evaluate_model.py`)**
-   - Evaluates the trained model on validation and test splits.
-   - Generates key metrics: mAP@0.5, mAP@0.5:0.95, Precision, Recall, and F1-score.
-   - Produces a confusion matrix and an error analysis report for misclassifications.
+✅ Real-time helmet detection  
+✅ YOLOv8n lightweight model for fast inference  
+✅ PyTorch-based implementation  
+✅ Supports images, videos, and webcam streams  
+✅ High-speed object detection  
+✅ Easy to train on custom datasets  
+✅ OpenCV integration for visualization  
 
-5. **Model Export (`05_export_model.py`)**
-   - Exports the best weights to the `models/` directory.
-   - Converts the model to `ONNX` and `TorchScript` formats for deployment.
-   - Includes a brief inference speed benchmark to ensure real-time readiness.
+---
 
-## How to Run
+# 🛠️ Tech Stack
 
-Install dependencies:
+- **Python**
+- **PyTorch**
+- **YOLOv8n (Ultralytics)**
+- **OpenCV**
+- **Pandas**
+- **Roboflow**
+
+---
+
+# ⚙️ Installation
+
+## Clone the Repository
+
 ```bash
-pip install ultralytics Pillow matplotlib numpy pyyaml onnx onnxruntime
+git clone https://github.com/lakshyajain1508/Helmet-Detection.git
+cd Helmet-Detection
 ```
 
-Run the pipeline sequentially:
-```bash
-python 01_preprocess_dataset.py
-python 02_augment_rebalance.py
-python 03_train_yolov8.py
-python 04_evaluate_model.py
-python 05_export_model.py
+---
+
+# 📦 Requirements
+
+Example dependencies:
+
+```txt
+ultralytics
+torch
+torchvision
+opencv-python
+numpy
+matplotlib
 ```
+
+---
+
+# 🧠 Model Used
+
+This project uses:
+
+## YOLOv8n
+
+* Lightweight and fast object detection model
+* Optimized for real-time applications
+* Built using PyTorch
+* Developed by Ultralytics
+
+---
+
+# 🏋️ Training the Model
+
+```bash
+yolo detect train data=data.yaml model=yolov8n.pt epochs=50 imgsz=640
+```
+
+---
+
+# ▶️ Run Detection
+
+## Detect on Image
+
+```bash
+python detect.py --source image.jpg
+```
+
+## Detect using Webcam
+
+```bash
+python detect.py --source 0
+```
+
+---
+
+# 📊 Classes
+
+The model is trained to detect:
+
+* Helmet
+* No Helmet
+
+---
+
+# 📸 Sample Results
+
+| Input            | Detection Output |
+| ---------------- | ---------------- |
+| Motorcycle Rider | Helmet Detected  |
+| Traffic CCTV     | No Helmet Alert  |
+
+> Add screenshots or GIFs here for better presentation.
+
+---
+
+# 📈 Future Improvements
+
+* Number plate recognition
+* Traffic violation automation
+* Multi-rider tracking
+* Cloud deployment
+* Android/Web application integration
+
+---
+
+
