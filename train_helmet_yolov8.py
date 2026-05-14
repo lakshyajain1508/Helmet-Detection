@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import os, sys
 os.environ.setdefault("PYTHONUTF8", "1")
 if sys.stdout and hasattr(sys.stdout, 'reconfigure'):
